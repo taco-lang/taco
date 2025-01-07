@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require_relative '../lib/taco'
+
+filename = ARGV[0]
+unless filename
+  puts "Error: No input file specified"
+  exit(1)
+end
+
+begin
+  interpreter = Taco::TacoInterpreter.new
+  interpreter.run(filename)
+rescue StandardError => e
+  puts "Error: #{e.message}"
+  exit(1)
+end
